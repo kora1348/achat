@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '../todo/todo.service';
 import { EditListService } from './edit-list.service';
+import { Tit } from '../todo/types/toto.response';
 
 @Component({
   selector: 'app-edit-list',
@@ -9,15 +10,16 @@ import { EditListService } from './edit-list.service';
   styleUrls: ['./edit-list.component.css']
 })
 export class EditListComponent implements OnInit {
-  svm: any;
+  filteredTIT: Tit[] = [];
+  
+  svm: string | undefined;
+  
+  constructor(private editListService: EditListService, private router: Router, private activatedRoute: ActivatedRoute,
+    ) { }
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private editList: EditListService,
-  ) {}
 
   ngOnInit() {
+    this.filteredTIT = this.editListService.TIT;
     let svm: string | null;
     svm = this.activatedRoute.snapshot.paramMap.get('svm');
     if (!svm) {

@@ -1,16 +1,31 @@
 <div class="container text-center">
     <h2 class="pt-3 pb-3">HTML Edit Table</h2>
-  
-    <table class="mb-5">
-      <tr>
+
+    <ul>
+      <li *ngFor="let item of filteredTIT">{{ item | json }}</li>
+  </ul>
+
+ 
+  <table class="mb-5">
+    <tr>
+        <th>Nom</th>
+        <th>Tarif Client 1</th>
+        <th>Tarif Client 3</th>
         <th>SVM</th>
-        <td>{{ svm }}</td>
-      </tr>
-      <tr>
-        <th>LABEL</th>
-        <!-- <td>{{ label }}</td> -->
-      </tr>
-    </table>
+        <th>ISIN</th>
+        <th>ACTION</th>
+    </tr>
+
+    <tr *ngFor="let item of filteredTIT">
+
+        <td class="text-start">
+            <a class="like-anchor">{{ item.ADVTITRE.BASIQUETITRE.LABEL }}</a>
+        </td>
+        
+     
+    </tr>
+
+</table>
   
     <button class="btn btn-primary" (click)="goBack()">Précédent</button>
   </div>
