@@ -4,49 +4,40 @@
 
     <ul>
         <li *ngFor="let item of filteredTIT">{{ item | json }}</li>
-        </ul>
+    </ul>
+    
     <table class="mb-5">
+        <tr>
+            <th>Tarif Client 1</th>
+            <th>SVM</th>
+            <th>ISIN</th>
+            <th>Nom</th>
+            <th>Place</th>
+        </tr>
 
-        <ng-container *ngFor="let item of filteredTIT">
+        <tr *ngFor="let item of filteredTIT">
 
-            <tr>
-                <th>RISK</th>
-                <td>{{ item.AANBOD.RISK }}</td>
+            <td class="text-start">
+            <button class="like-anchor">{{ item.ADVTITRE.BASIQUETITRE.LABEL }}</button>
+            </td>
+            
+            <td> {{ item.PLN[0].PLAGE[0].FRAIS_ETRANGERS }}%-{{ item.PLN[2].PLAGE[0].MIN_FRAIS_ETR }}%</td>
+            <td> {{ item.PLN[2].PLAGE[0].FRAIS_ETRANGERS }}%-{{ item.PLN[2].PLAGE[0].MIN_FRAIS_ETR }}%</td>
+            <td class="text-center"> {{ item.ADVTITRE.BASIQUETITRE.ISIN }}</td>
+            <td class="text-end"> {{ item.ADVTITRE.BASIQUETITRE.COURS.VALUE }} {{ item.ADVTITRE.BASIQUETITRE.DEVISE }}</td>
+            <td class="text-end"> {{ item.ADVTITRE.BASIQUETITRE.COURS.DATE}}</td>
+            <td class="text-center"> {{ item.AANBOD.DATEVALID_DEBUT  }} - {{ item.AANBOD.DATEVALID_FIN  }} </td>
+            <td class="text-center"> {{ item.AANBOD.QTTE_MIN }} / {{ item.AANBOD.QTTE_MAX }} </td>
+            <td class="text-center"> {{ item.AANBOD.PRIX_MARCHE }} / {{ item.AANBOD.PRIX_CLIENT }} </td>
+            <td class="text-center"> {{ item.AANBOD.QTTE_TOTALE }} / {{ item.AANBOD.QTTE_FAITE }} </td>
+            <td class="text-center">
+            <!-- <select class="form-select green-background" (change)="onActionChange($event, item.ADVTITRE.BASIQUETITRE.SVM)">
+            <option selected disabled value="">Choisissez une action</option>
+            <option value="edit">Modifier</option>
+            <option value="delete">Annuler</option>
+            </select> -->
+            </td>
             </tr>
 
-            <tr>
-                <th>SVM</th>
-                <td>{{ item.ADVTITRE.BASIQUETITRE.SVM }}</td>
-            </tr>
-            <tr>
-                <th>LABEL</th>
-                <td>{{ item.ADVTITRE.BASIQUETITRE.LABEL }}</td>
-            </tr>
-
-            
-            
-            <tr>
-                <th>
-                    Droit d'entrée et de sortie
-                </th>
-                <td>
-                    <ul>
-                        <li>{{ item.PLN[0].CODE }} - Tarif Client 1 : {{ item.PLN[0].PLAN }} - (Droits d'entréee {{ item.PLN[0].PLAGE[0].FRAIS_ETRANGERS }} droit de sortie {{ item.PLN[2].PLAGE[0].MIN_FRAIS_ETR }})</li>
-                        <li>{{ item.PLN[2].CODE }} - Tarif Client 3 :{{ item.PLN[2].PLAN }} - (Droits d'entréee {{ item.PLN[2].PLAGE[0].FRAIS_ETRANGERS }} droit de sortie {{ item.PLN[2].PLAGE[0].MIN_FRAIS_ETR }})</li>
-                    </ul>
-                </td>
-              
-                   
-                
-            </tr>
-           
-                
-           
-            
-            
-           
-        
-          </ng-container>
-       
     </table>
-</div>
+
