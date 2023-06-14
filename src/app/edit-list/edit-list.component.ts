@@ -11,23 +11,18 @@ import { Tit } from '../todo/types/toto.response';
 })
 export class EditListComponent implements OnInit {
   filteredTIT: Tit[] = [];
-  
   svm: string | undefined;
-  
-  constructor(private editListService: EditListService, private router: Router, private activatedRoute: ActivatedRoute,
-    ) { }
+  isin: string | undefined;
 
+  constructor(private editListService: EditListService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.filteredTIT = this.editListService.TIT;
-    let svm: string | null;
-    svm = this.activatedRoute.snapshot.paramMap.get('svm');
-    if (!svm) {
-      this.goBack();
-      return;
+    const svm = this.route.snapshot.paramMap.get('svm');
+    const record = this.editListService.TIT.find(item => item.ADVTITRE.BASIQUETITRE.SVM.toString() === svm);
+    if (record) {
+      this.isin = record.ADVTITRE.BASIQUETITRE.ISIN;
+      console.log(this.isin);
     }
-    this.svm = svm;
-    console.log('Message => ', this.svm);
   }
 
   goBack() {
