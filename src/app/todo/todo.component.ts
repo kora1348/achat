@@ -32,11 +32,11 @@ export class TodoComponent implements OnInit {
     }
     
     navigateToEdit(svm: number) {
-    this.router.navigate(['/functional-management/edit-purchasable-securities', svm]);
+    this.router.navigate(['/edit-list', svm]);
     }
     
     navigateToDelete(svm: number) {
-    this.router.navigate(['/functional-management/delete-purchasable-securities', svm]);
+    this.router.navigate(['/edit-list', svm]);
     }
     
     addPurchasableSecurities() {
