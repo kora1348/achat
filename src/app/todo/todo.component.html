@@ -8,34 +8,31 @@
     
     <table class="mb-5">
         <tr>
+            <th>Nom</th>
             <th>Tarif Client 1</th>
+            <th>Tarif Client 3</th>
             <th>SVM</th>
             <th>ISIN</th>
-            <th>Nom</th>
-            <th>Place</th>
+            <th>ACTION</th>
         </tr>
 
         <tr *ngFor="let item of filteredTIT">
 
             <td class="text-start">
-            <button class="like-anchor">{{ item.ADVTITRE.BASIQUETITRE.LABEL }}</button>
+                <a class="like-anchor">{{ item.ADVTITRE.BASIQUETITRE.LABEL }}</a>
             </td>
             
             <td> {{ item.PLN[0].PLAGE[0].FRAIS_ETRANGERS }}%-{{ item.PLN[2].PLAGE[0].MIN_FRAIS_ETR }}%</td>
             <td> {{ item.PLN[2].PLAGE[0].FRAIS_ETRANGERS }}%-{{ item.PLN[2].PLAGE[0].MIN_FRAIS_ETR }}%</td>
+            
+            <td class="text-center"> {{ item.ADVTITRE.BASIQUETITRE.SVM }}</td>
             <td class="text-center"> {{ item.ADVTITRE.BASIQUETITRE.ISIN }}</td>
-            <td class="text-end"> {{ item.ADVTITRE.BASIQUETITRE.COURS.VALUE }} {{ item.ADVTITRE.BASIQUETITRE.DEVISE }}</td>
-            <td class="text-end"> {{ item.ADVTITRE.BASIQUETITRE.COURS.DATE}}</td>
-            <td class="text-center"> {{ item.AANBOD.DATEVALID_DEBUT  }} - {{ item.AANBOD.DATEVALID_FIN  }} </td>
-            <td class="text-center"> {{ item.AANBOD.QTTE_MIN }} / {{ item.AANBOD.QTTE_MAX }} </td>
-            <td class="text-center"> {{ item.AANBOD.PRIX_MARCHE }} / {{ item.AANBOD.PRIX_CLIENT }} </td>
-            <td class="text-center"> {{ item.AANBOD.QTTE_TOTALE }} / {{ item.AANBOD.QTTE_FAITE }} </td>
             <td class="text-center">
-            <!-- <select class="form-select green-background" (change)="onActionChange($event, item.ADVTITRE.BASIQUETITRE.SVM)">
+            <select class="form-select green-background" (change)="onActionChange($event, item.ADVTITRE.BASIQUETITRE.SVM)">
             <option selected disabled value="">Choisissez une action</option>
             <option value="edit">Modifier</option>
             <option value="delete">Annuler</option>
-            </select> -->
+            </select>
             </td>
             </tr>
 
